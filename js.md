@@ -230,3 +230,71 @@ document.body.addEventListener("touchstart", () => {
     // 执行上述媒体自动播放代码
 }, { once: true });
 ```
+
+### 图片懒加载
+```js
+function lazyload() {
+  const imgs = document.getElementsByTagName('img');
+  const len = imgs.length;
+  // 视口的高度
+  const viewHeight = document.documentElement.clientHeight;
+  // 滚动条高度
+  const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop;
+  for (let i = 0; i < len; i++) {
+    const offsetHeight = imgs[i].offsetTop;
+    if (offsetHeight < viewHeight + scrollHeight) {
+      const src = imgs[i].dataset.src;
+      imgs[i].src = src;
+    }
+  }
+}
+
+// 可以使用节流优化一下
+window.addEventListener('scroll', lazyload);
+```
+
+### 滚动加载
+原理就是监听页面滚动事件，分析clientHeight、scrollTop、scrollHeight三者的关系。
+```js
+window.addEventListener('scroll', function() {
+  const clientHeight = document.documentElement.clientHeight;
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight;
+  if (clientHeight + scrollTop >= scrollHeight) {
+    // 检测到滚动至页面底部，进行后续操作
+    // ...
+  }
+}, false);
+```
+
+
+### 元素曝光监听
+IntersectionObserver 对象，用于监听元素是否在可视区域内。
+
+```js
+const els = document.querySelectorAll('.autoexpo')
+
+this.observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        
+        // 获取曝光元素属性
+        const { sapmodid, eleid, name } = this.getAttributes(entry.target)
+        
+        // 这里判断是否第一次曝光
+        const item = this.expoList.find(v => v.sapmodid === sapmodid && v.eleid === eleid )
+        
+        if (!item) {
+          // 这里进行元素曝光日志上报
+          // ...
+        }
+      }
+    }
+  }
+)
+els.forEach(v => {
+  this.observer.observe(v)
+})
+```
+
+
