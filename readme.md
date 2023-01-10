@@ -46,5 +46,6 @@
     - [x] [自动播放媒体](https://github.com/GuoguoDad/mobile-devpit/blob/main/js.md#自动播放媒体)
     - [x] [图片懒加载](https://github.com/GuoguoDad/mobile-devpit/blob/main/js.md#图片懒加载)
     - [x] [滚动加载](https://github.com/GuoguoDad/mobile-devpit/blob/main/js.md#滚动加载)
+    - [x] [元素曝光监听](https://github.com/GuoguoDad/mobile-devpit/blob/main/js.md#元素曝光监听)
 - **bug记录**
-    - [x] [上传文件【连续上传相同的照片没反应】](https://github.com/GuoguoDad/mobile-devpit/blob/main/js.md#上传文件【连续上传相同的照片没反应】)
+    - [x] [上传文件【连续上传相同的照片没反应】](https://github.com/GuoguoDad/mobile-devpit/blob/main/bugLog.md#上传文件【连续上传相同的照片没反应】)

@@ -2,7 +2,7 @@
 
 ### 上传文件【连续上传相同的照片没反应】
 > input type=file `onChange`事件触发上传逻辑，火狐浏览器连续相同的文件是可以触发onChange事件，而`chrome浏览器` 和 `android手机`触发不了onChange事件
-> 
+
 ```js
 export const ImagePicker = (props: ImagePickerProp) => {
   const { files, max = 0, onImageAdd, onDel } = props
